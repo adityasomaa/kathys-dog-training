@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  /* Kathy's Dog Training: the deep forest green of her website, the lime green of her logo's
+     tagline, on warm cream. Token names are shared with the template: night/coal/steel are the
+     page and section backgrounds, bone/ash the text on them, gold the lime accent, brass the
+     dark green button. */
+  --color-night: #f7f5ee;
+  --color-coal: #eef1e4;
+  --color-steel: #e2ecd3;
+  --color-bone: #1f2b23;
+  --color-ash: #66705f;
+  --color-rule: rgb(31 43 35 / 0.12);
+  --color-gold: #80b030;
+  --color-gold-deep: #25653d;
+  --color-brass: #25653d;
+
+  --color-ink: #1f2b23;
+  --color-paper: #ffffff;
+  --color-cream: #f7f5ee;
+  --color-sand: #eef1e4;
+  --color-butter: #e6f0d6;
+  --color-seal: #25653d;
+  --color-muted: #66705f;
+  --color-line: rgb(31 43 35 / 0.12);
+
+  --font-display: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+  --font-tag: var(--font-nunito), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-kaushan), cursive;
+
+  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background: var(--color-night);
+  color: var(--color-bone);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-night);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-night);
+}
+
+/* Native scrolling on touch / small screens keeps momentum feel */
+html:not(.lenis) {
+  scroll-behavior: auto;
+}
+
+/* Hide everything behind the curtain until the first open */
+html.is-loading body {
+  overflow: hidden;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+/* Headings in Cormorant Garamond, close to the roman GFP of the logo */
+/* Headings in heavy, rounded Nunito (the face of her logo's tagline); accents in Kaushan Script,
+   the brush script closest to the "Kathy's" of her logo. */
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 4.4vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.eyebrow {
+  font-family: var(--font-tag);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+}
